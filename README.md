@@ -49,6 +49,8 @@ Features may include:
 
 **  Target_gpcd is a required feature ** 
 
+The user will also load a folder with files containing all the data together (including population data and Target_gpcd values) for calculating average demand by month.
+
 ### Model Input
 
 The following are inputs used within in the model:
