@@ -24,15 +24,15 @@ The following are modules used in the model that are not downloaded automaticall
 
 ### Loading Data
 
-The user will provide two sets of data: training data and testing data.
+The user will provide two sets of data: historical data (loaded as historical_data) and forecast data (loaded as forecast_data).
 
-Testing data will include data from three years: one drought year, one average year, and one surplus year.
+The historical data will be divided into training and testing data with the identification of three years: one drought year, one average year, and one surplus year. The training data will be used to calibrate the model and should not be less than 30 years. The testing data will be used in order to quantify the accuracy of the model's predictions when making predictions for varying conditions.
 
-Training data will include data from all years besides those selected as the testing data. Training data should not be less than 30 years.
+The forecast data set will include the conditions anticipated by the user for the year which the prediction is being made for.
 
-Training data and testing data files should each contain an excel file for each month. Excel files should have features listed along the top as column titles and years listed along the left side as row titles. These excel files will be loaded into a python dictionary format with the help of the provided template.
+Historical and forecast data files should each contain an excel file for each month. Excel files should have features listed along the top as column titles and years listed along the left side as row titles. These excel files will be loaded into a python dictionary format with the help of the provided template.
 
-Features may include:
+Features may include the following or any other features desired by the user:
 
 | Feature | Suggested Units | Label |
 | --- | --- | --- |
@@ -41,17 +41,17 @@ Features may include:
 | Monthly snowfall | mm |  Apr_snow_in &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mar_snow_in &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; etc |
 | Yearly snowfall | mm | Total_snow_in |
 | Snow shortage | mm | Snow_shortage |  
-| Housing | units | Housing |
-| Population density | people / sq mile |  HousingDensity |
+| Housing | units | 
+| Population density | people / sq mile |
 | Streamflow of major streams | acre-feet |
 | Conservation goal | gpcd | cons_goal |
 | Mean monthly per capita water demand | gpcd | Target_gpcd |
 
 **  Target_gpcd is a required feature ** 
 
-The user will also load a folder with files containing all the data together (including population data and Target_gpcd values) for calculating average demand by month.
+Note: the CSD-WDM model used gpcd as units. If user wishes to have predictions in other units, conversions can be made after running the model and collecting values.
 
-### Model Input
+### Model Inputs
 
 The following are inputs used within in the model:
 
@@ -59,20 +59,40 @@ The following are inputs used within in the model:
 
 * Snow data and set conservation goals may be used in the data files if relevant for the area of interest, but must be set to False if not provided in the excel data.
 
-* Correlation threshold is the limit (number between 0 and 1) to be used when examining the relationship between a feature and the target. A range of values to test exists in the model template, but may be edited if desired.
+* Correlation threshold is the limit (number between 0 and 1) to be used when examining the relationship between a feature and the target.
 
-* Collinearity threshold is the limit (number between 0 and 1) to be used when examining the relationship between two features. This threshold is used to remove a feature with the weaker correlation. A range of values to test exists in the model template, but may also be edited if desired.
+* Collinearity threshold is the limit (number between 0 and 1) to be used when examining the relationship between two features. This threshold is used to remove a feature with the weaker correlation. 
 
 **Possible Inputs**
 
 | Name of Input | Choices | Enter in template |
 | --- | --- | --- |
-| **Scoring** | R squared | 'R2' |
-| | Root Mean Square Error | 'RMSE' |
 | **Snowfeatures** | Use snowfall data | [True, False] |
 | | Don't use snowfall data | [False] |
 | **Conservation** | Use conservation goal | [True, False] |
 | | Don't use conservation goal | [False] |
+| **Scoring** | R squared | 'R2' |
+| | Root Mean Square Error | 'RMSE' |
+
+| Name of Input | Default (may be editied) | In template |
+| --- | --- | --- |
+| **Correlation Threshold** | Test all values between 0 and .95 with increments of 0.05 | np.arange(0,0.95, 0.05) |
+| **Colinearity Threshold** | Test all values between .65 and .9 with increments of 0.0 | [0.65, 0.7, 0.75, 0.80, 0.85, 0.90] |
+
+### Accessing More Data
+
+More data may be accessed that is not automatically displayed in the CSD-WDM template. To access these values, the user must edit the module file. To do so, follow these instructions or feel free to contact one of the contributers via email for assistance.
+
+PerfDF, cv_results, cor, X_test_RFE, coef
+
+1. ...
 
 ## Contributers
 
+**Ryan Johnson**
+
+ryan.c.johnson@utah.edu
+
+**Emily Baur**
+
+emb5050@gmail.com
