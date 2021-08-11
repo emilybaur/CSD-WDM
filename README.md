@@ -81,11 +81,7 @@ The following are inputs used within in the model:
 
 ### Accessing More Data
 
-More data may be accessed that is not automatically displayed in the CSD-WDM template. To access these values, the user must edit the module file. To do so, follow these instructions or feel free to contact one of the contributers via email for assistance.
-
-PerfDF, cv_results, cor, X_test_RFE, coef
-
-1. ...
+More data may be accessed that is not automatically displayed in the CSD-WDM template. To access this data, the user must edit the module file. To print out lines with information about selected features, cv scores, number of selected features, and values for error metrics, the user may remove the quote marks around the print lines in the Outdoor_Demand_Model and model_plots functions. For help with this or other challenges, feel free to contact the contributers via email.
 
 ## Contributers
 
