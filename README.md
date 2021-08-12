@@ -81,7 +81,7 @@ The following are inputs used within in the model:
 
 ### Accessing More Data
 
-More data may be accessed that is not automatically displayed in the CSD-WDM template. To access this data, the user must edit the module file. To print out lines with information about selected features, cv scores, number of selected features, and values for error metrics, the user may remove the quote marks around the print lines in the Outdoor_Demand_Model and model_plots functions. For help with this or other challenges, feel free to contact the contributers via email.
+More data may be accessed that is not automatically displayed in the CSD-WDM template. To access this data, the user must edit the module file. To print out lines with information about selected features, cv scores, number of selected features, final features, and values for error metrics, the user may remove the quote marks around the print lines in the Outdoor_Demand_Model and model_plots functions. For help with this or other challenges, feel free to contact the contributers via email.
 
 ## Contributers
 
